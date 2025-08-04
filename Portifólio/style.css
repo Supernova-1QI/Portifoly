@@ -1,3 +1,4 @@
+/* style.css atualizado */
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 :root {
@@ -13,24 +14,50 @@ body {
     color: #333;
     background-color: #f8f9fa;
     line-height: 1.6;
+    scroll-behavior: smooth;
 }
 
 .navbar {
     background-color: var(--primary-color);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .navbar-brand {
     font-weight: 700;
     color: white !important;
+    font-family: 'Chakra Petch', sans-serif;
 }
 
 .nav-link {
     color: rgba(255, 255, 255, 0.85) !important;
     font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .nav-link:hover {
     color: white !important;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
 }
 
 header {
@@ -40,6 +67,7 @@ header {
     text-align: center;
     position: relative;
     overflow: hidden;
+    margin-top: 56px;
 }
 
 header::before {
@@ -61,6 +89,11 @@ header::before {
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     margin-bottom: 1.5rem;
     position: relative;
+    transition: transform 0.5s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.05);
 }
 
 .section-title {
@@ -69,6 +102,8 @@ header::before {
     margin-bottom: 30px;
     color: var(--primary-color);
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .section-title::after {
@@ -80,6 +115,7 @@ header::before {
     width: 80px;
     height: 4px;
     background-color: var(--accent-color);
+    border-radius: 2px;
 }
 
 .specialty-card {
@@ -102,6 +138,11 @@ header::before {
     font-size: 2.5rem;
     color: var(--accent-color);
     margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.specialty-card:hover .specialty-icon {
+    transform: rotate(10deg) scale(1.1);
 }
 
 .badge-custom {
@@ -110,6 +151,12 @@ header::before {
     font-weight: 500;
     padding: 0.5em 1em;
     margin: 0.25rem;
+    transition: all 0.3s ease;
+}
+
+.badge-custom:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
 
 .timeline {
@@ -127,6 +174,7 @@ header::before {
     bottom: 0;
     left: 50%;
     margin-left: -2px;
+    border-radius: 2px;
 }
 
 .timeline-item {
@@ -170,6 +218,11 @@ header::before {
     position: relative;
     border-radius: 6px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: scale(1.02);
 }
 
 .btn-primary-custom {
@@ -178,12 +231,16 @@ header::before {
     padding: 10px 25px;
     font-weight: 600;
     transition: all 0.3s ease;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .btn-primary-custom:hover {
     background-color: #16a085;
     border-color: #16a085;
     transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .contact-item {
@@ -197,12 +254,100 @@ header::before {
     color: var(--accent-color);
     margin-right: 15px;
     min-width: 30px;
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover .contact-icon {
+    transform: scale(1.2);
 }
 
 footer {
     background-color: var(--primary-color);
     color: white;
     padding: 3rem 0;
+}
+
+/* Novos elementos */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.testimonial-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    padding: 25px;
+    margin-bottom: 30px;
+    height: 100%;
+    border-left: 4px solid var(--accent-color);
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 2px solid var(--accent-color);
+}
+
+.rating {
+    color: gold;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.publication-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    padding: 20px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+    height: 100%;
+    border-bottom: 4px solid var(--accent-color);
+}
+
+.publication-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.publication-img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.publication-card:hover .publication-img {
+    transform: scale(1.03);
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: none;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 @media (max-width: 768px) {
@@ -222,5 +367,27 @@ footer {
     
     .left::after, .right::after {
         left: 15px;
+    }
+
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    header {
+        padding: 3rem 0;
+    }
+    
+    .profile-img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
     }
 }
